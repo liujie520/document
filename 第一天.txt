@@ -3,11 +3,18 @@ BMS:微服务
 
 由微应用调用微服务,
 同时由微服务调用数据库。。。。。
+微应用的代码必须与微服务的代码一致
+
+项目请求的大致流程:
+1:首先当客户端发送请求时,先调用微应用的Controller层,要求返回ResponseModel对象,
+2:那微应用的Manager层则需要调用微服务的Controller层，所以微服务的Cotroller也要返回ResponseModel对象
+3：与此同时,微服务的Manager层就负责调用,微服务的Mapper层,而微应用没有mapper层
 
 
 
 vue：
 npm run dev:打包成测试环境下运行
+npm run dev
 
 
 数据库:
@@ -21,16 +28,16 @@ Eclipse中的微应用,再由微应用来调用微服务
 页面的所有：
 import {selectUser} from './main.js';先将方法从外部引用过来,再在vue界面进行调用
 
+mounted：初始加载事件
 
 
 
 数据库操作：
 SELECT * FROM HZ_USER FOR UPDATE:可以对其修改
 
-今日完成:
-输入一个姓名,然后去数据库里进行查询,
-将返回的phone用syso打印出来即可
-
+用户名:YXYH_GD
+密码:YXYH2019#
+数据库使用：ORCL
 
 
 
@@ -47,6 +54,41 @@ question:
 Ctrl+z
 以及
 Ctrl+Shift+Z
+
+
+
+
+
+Pid对应父级菜单的id
+初始化时展开所有的节点
+
+ v-model="input1"
+这个input1就类似ID
+
+
+
+如果控制层是:
+@RequestParam String name来获取入参的话,那么
+就要使用拼接的方式： url: '/liujie/getAllUser?name='+req,
+
+而如果你是以
+@RequestBody(required=false)UserModel userModel对象的方式,且要用@requestBody
+那么你就得把参数放在 data中
+
+
+
+
+
+
+
+{
+          zjlxdm: '2016-05-02',//出生日期
+          khmc: '王小虎',
+          zldl: '男',
+          zjmc:'430488888',
+          zjhm:'17674734453',
+          zjdqrq:'2020-11-11'
+ }       
 
 
 
